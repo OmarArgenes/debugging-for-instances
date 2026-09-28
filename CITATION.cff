@@ -1,7 +1,6 @@
 cff-version: 1.2.0
 message: "If you use or discuss Debugging for Instances (DFI), please cite the foundational publication."
 title: "Debugging for Instances (DFI): Marco metodológico de diagnóstico y depuración de software asistido por inteligencia artificial y basado en evidencia"
-type: report
 version: "1.0"
 date-released: "2026-09-27"
 doi: "10.5281/zenodo.22986103"
