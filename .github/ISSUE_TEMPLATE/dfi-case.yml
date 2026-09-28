@@ -1,0 +1,41 @@
+name: DFI case study
+description: Propose a reproducible DFI case for review
+title: "[Case]: "
+labels: ["case-study"]
+body:
+  - type: markdown
+    attributes:
+      value: "Please remove secrets and personal/customer data before submitting evidence."
+  - type: input
+    id: stack
+    attributes:
+      label: Technology stack
+      placeholder: "WordPress, Angular, API, PostgreSQL..."
+    validations:
+      required: true
+  - type: textarea
+    id: symptom
+    attributes:
+      label: Observable problem
+      description: Describe expected and actual behavior without assuming the cause.
+    validations:
+      required: true
+  - type: textarea
+    id: hypotheses
+    attributes:
+      label: Initial hypotheses
+      description: List testable candidate explanations.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Diagnostic tests and evidence
+      description: Describe probes, observations, and how they changed the hypothesis set.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Correction and verification
+      description: If resolved, explain the minimal correction and regression checks.
