@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Debugging for Instances (DFI) — an evidence-based methodology for AI-assisted software diagnosis and debugging.">
+  <meta name="author" content="Omar Argenes Quispe">
+  <meta name="citation_title" content="Debugging for Instances (DFI): Marco metodológico de diagnóstico y depuración de software asistido por inteligencia artificial y basado en evidencia">
+  <meta name="citation_author" content="Omar Argenes Quispe">
+  <meta name="citation_publication_date" content="2026-09-27">
+  <meta name="citation_doi" content="10.5281/zenodo.22986103">
+  <title>Debugging for Instances (DFI)</title>
+  <link rel="icon" href="assets/dfi-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="./"><img src="assets/dfi-mark.svg" alt="DFI"><span>Debugging for Instances</span></a>
+    <nav>
+      <a href="#method">Method</a>
+      <a href="#scope">Scope</a>
+      <a href="#research">Research</a>
+      <a href="https://doi.org/10.5281/zenodo.22986103">Publication</a>
+      <a href="https://github.com/OmarArgenes/debugging-for-instances">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">DFI · Foundational version 1.0</p>
+        <h1>AI-assisted software diagnosis,<br><span>grounded in evidence.</span></h1>
+        <p class="lead">A methodological proposal for reducing diagnostic uncertainty through falsifiable hypotheses, adaptive tests, controlled instrumentation, observable evidence, and explicit verification.</p>
+        <div class="actions">
+          <a class="button primary" href="https://doi.org/10.5281/zenodo.22986103">Read the publication</a>
+          <a class="button" href="methodology.md">Explore the methodology</a>
+        </div>
+        <div class="principle"><strong>AI proposes.</strong> Evidence decides. The engineer controls.</div>
+      </div>
+      <aside class="hero-card" aria-label="DFI record">
+        <div class="record-label">Canonical record</div>
+        <div class="record-value">DFI v1.0</div>
+        <div class="record-row"><span>DOI</span><a href="https://doi.org/10.5281/zenodo.22986103">10.5281/zenodo.22986103</a></div>
+        <div class="record-row"><span>Author</span><a href="https://orcid.org/0009-0009-7371-1384">Omar Argenes Quispe</a></div>
+        <div class="record-row"><span>Status</span><b>Published</b></div>
+      </aside>
+    </section>
+
+    <section class="section" id="method">
+      <div class="section-head">
+        <p class="eyebrow">Operational cycle</p>
+        <h2>Seven phases from symptom to verified correction</h2>
+        <p>DFI treats debugging as an iterative reduction of uncertainty, not as a sequence of guesses.</p>
+      </div>
+      <div class="grid steps">
+        <article><b>01</b><h3>Delimit</h3><p>Define the observable problem, environment and constraints.</p></article>
+        <article><b>02</b><h3>Hypothesize</h3><p>Create explanations that evidence can support or reject.</p></article>
+        <article><b>03</b><h3>Select</h3><p>Choose the next diagnostic test with useful information gain.</p></article>
+        <article><b>04</b><h3>Observe</h3><p>Instrument minimally and capture what the system actually does.</p></article>
+        <article><b>05</b><h3>Update</h3><p>Refine the hypothesis set instead of forcing an early conclusion.</p></article>
+        <article><b>06</b><h3>Correct</h3><p>Apply the smallest justified change to the supported cause.</p></article>
+        <article><b>07</b><h3>Verify</h3><p>Reproduce, regression-check and close with traceable evidence.</p></article>
+      </div>
+    </section>
+
+    <section class="section split" id="scope">
+      <div>
+        <p class="eyebrow">Probe surfaces</p>
+        <h2>Designed for multi-layer investigation</h2>
+        <p>DFI can move across a software system as evidence requires, rather than remaining attached to a single framework or debugging tool.</p>
+      </div>
+      <div class="chips">
+        <span>WordPress / CMS</span><span>Angular</span><span>React</span><span>Vue</span>
+        <span>APIs</span><span>Backend</span><span>PostgreSQL</span><span>MySQL</span>
+        <span>DevOps / SRE</span><span>Observability</span><span>Defensive security</span>
+      </div>
+    </section>
+
+    <section class="section research" id="research">
+      <p class="eyebrow">Research status</p>
+      <h2>A methodology to be tested, not a superiority claim.</h2>
+      <p>DFI v1.0 formalizes the framework. Expected improvements in diagnosis time, precision, productivity, quality, risk reduction, and reproducibility remain hypotheses requiring controlled empirical validation.</p>
+      <div class="metrics">
+        <span>Time to correct cause</span><span>Root-cause accuracy</span><span>Probe count</span>
+        <span>False paths</span><span>Verification success</span><span>Reproducibility</span>
+      </div>
+      <a class="text-link" href="validation.md">Read the validation plan →</a>
+    </section>
+
+    <section class="section citation">
+      <p class="eyebrow">Citation</p>
+      <h2>Use the canonical DOI</h2>
+      <p>Quispe, Omar Argenes. (2026). <em>Debugging for Instances (DFI): Marco metodológico de diagnóstico y depuración de software asistido por inteligencia artificial y basado en evidencia</em>. Zenodo.</p>
+      <div class="doi"><code id="doi">10.5281/zenodo.22986103</code><button id="copyDoi" type="button">Copy DOI</button></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Omar Argenes Quispe</span>
+    <span>Documentation: CC BY-NC-ND 4.0</span>
+  </footer>
+  <script src="assets/app.js"></script>
+</body>
+</html>
