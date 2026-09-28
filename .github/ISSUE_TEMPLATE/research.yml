@@ -1,0 +1,23 @@
+name: Research / validation proposal
+description: Suggest an experiment, metric, replication, or methodological correction
+title: "[Research]: "
+labels: ["research"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Research question
+    validations:
+      required: true
+  - type: textarea
+    id: design
+    attributes:
+      label: Proposed design
+      description: Include baseline, conditions, measurements, and controls where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: validity
+    attributes:
+      label: Threats to validity
+      description: Identify confounders, limitations, and alternative explanations.
