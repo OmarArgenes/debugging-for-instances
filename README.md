@@ -1,5 +1,7 @@
 # Debugging for Instances (DFI)
 
+**English** · [Español](README.es.md)
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22986103.svg)](https://doi.org/10.5281/zenodo.22986103) [![ORCID](https://img.shields.io/badge/ORCID-0009--0009--7371--1384-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0009-0009-7371-1384) ![Version](https://img.shields.io/badge/version-1.0-0b6fa4) ![Status](https://img.shields.io/badge/status-foundational%20publication-2f855a)
 
 **Debugging for Instances (DFI)** is a proposed evidence-based methodology for AI-assisted software diagnosis and debugging.
