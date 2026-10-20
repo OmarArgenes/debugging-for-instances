@@ -77,7 +77,7 @@
       "id": "DFI-008",
       "title": "WordPress site serving a hosting default page",
       "path": "cases/DFI-008-wordpress-hosting-routing/",
-      "status": "layer-isolation-root-cause-unresolved",
+      "status": "root-page-resolved-separate-application-500-unresolved",
       "mode": [
         "http-surface-isolation"
       ]
@@ -86,7 +86,7 @@
       "id": "DFI-009",
       "title": "Quiz Builder canonical redirect",
       "path": "cases/DFI-009-quiz-builder-canonical-redirect/",
-      "status": "partially-diagnosed",
+      "status": "resolved-and-verified",
       "mode": [
         "routing",
         "query-state-tracing"
@@ -96,7 +96,7 @@
       "id": "DFI-010",
       "title": "LearnDash dependency removed by asset optimization",
       "path": "cases/DFI-010-learndash-asset-cleanup-fatal/",
-      "status": "cause-identified-correction-proposed",
+      "status": "resolved-operationally-and-verified-by-recovery",
       "mode": [
         "dependency-tracing"
       ]
@@ -134,7 +134,7 @@
       "id": "DFI-014",
       "title": "Certificate editor controlled backend-access bridge",
       "path": "cases/DFI-014-certificate-editor-backend-bridge/",
-      "status": "redirect-corrected-ui-verification-partial",
+      "status": "resolved-and-functionally-verified",
       "mode": [
         "tracing",
         "constrained-correction"
