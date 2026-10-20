@@ -1,0 +1,28 @@
+{
+  "caseId": "DFI-002",
+  "status": "resolved-and-verified",
+  "mode": [
+    "comparative",
+    "runtime-tracing"
+  ],
+  "stack": [
+    "WordPress",
+    "BuddyBoss",
+    "WooCommerce Memberships",
+    "AJAX"
+  ],
+  "observedFacts": {
+    "premiumPlanId": 605,
+    "slugLookupResult": false,
+    "numericPlanLookupResult": true,
+    "featureEnabled": true,
+    "groupContext": false
+  },
+  "verification": {
+    "previouslyFailingPremiumUser": "passed",
+    "previouslyWorkingPremiumUser": "passed",
+    "freeUserNegativeTest": "not-recorded"
+  },
+  "timeToCorrectCauseMinutes": null,
+  "note": "Historical reconstruction. Unrecorded timing metrics are intentionally null."
+}
