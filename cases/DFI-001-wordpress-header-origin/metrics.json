@@ -1,0 +1,22 @@
+{
+  "caseId": "DFI-001",
+  "title": "Identificación del origen real de un elemento de cabecera en WordPress",
+  "status": "resolved-original-context",
+  "publicReconstruction": true,
+  "mode": [
+    "exploratory",
+    "validation"
+  ],
+  "stack": [
+    "WordPress",
+    "Browser DevTools"
+  ],
+  "metrics": {
+    "timeToCorrectCauseMinutes": null,
+    "hypothesesCount": 2,
+    "diagnosticTestsCount": null,
+    "persistentChangesBeforeEvidence": 0,
+    "regressionsObserved": null
+  },
+  "note": "No se inventan métricas históricas. Los valores no registrados en el incidente original permanecen en null."
+}
