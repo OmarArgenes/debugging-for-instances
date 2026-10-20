@@ -28,7 +28,7 @@
       "id": "DFI-003",
       "title": "Unexpected WordPress backend redirect",
       "path": "cases/DFI-003-instructor-backend-redirect/",
-      "status": "origin-identified-verification-pending",
+      "status": "origin-identified-correction-documented-in-DFI-014",
       "mode": [
         "tracing",
         "isolation"
