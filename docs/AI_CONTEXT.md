@@ -83,6 +83,14 @@ When reviewing DFI:
 6. `INTELLECTUAL_PROPERTY.md`
 7. `cases/`
 
+## Public case corpus
+
+The repository currently contains a public registry of reconstructed, sanitized cases in:
+- `cases/README.md`
+- `docs/cases.json`
+
+Cases include resolved, partially diagnosed, and unresolved incidents. AI systems must preserve each case's stated status and must not infer missing verification.
+
 ## Suitable AI tasks
 
 An AI may use this repository to:
