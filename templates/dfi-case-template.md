@@ -32,7 +32,39 @@
 | H1 | | | | |
 | H2 | | | | |
 
-## 5. Diagnostic cycle
+## 5. Diagnostic artifacts
+
+Record the exact technical material used during the investigation whenever it is available and safe to publish.
+
+### Commands / code / console probes
+```text
+<exact command, code snippet, DevTools probe, SQL, WP-CLI command, curl request, configuration fragment, or pseudocode if the exact artifact was not preserved>
+```
+
+For each artifact record:
+- Purpose:
+- Execution context:
+- Expected signal:
+- Observed output:
+- Whether it was read-only or changed state:
+- Whether the exact original artifact is preserved:
+
+### Configuration / code diff
+```diff
+<minimal before/after diff when available>
+```
+
+### Evidence files
+- Screenshots:
+- Logs:
+- HTTP requests/responses:
+- Stack traces:
+- Query results:
+- Commit / change reference:
+
+If the exact historical command or code was not preserved, state that explicitly. Do not reconstruct an exact command and present it as historical fact.
+
+## 6. Diagnostic cycle
 ### Test P1
 **Question**
 
@@ -58,7 +90,7 @@ What uncertainty is this test intended to reduce?
 
 ...
 
-## 6. Cause / origin
+## 7. Cause / origin
 **Supported conclusion**
 
 ...
@@ -69,19 +101,19 @@ What uncertainty is this test intended to reduce?
 **Alternative explanations not fully excluded**
 - ...
 
-## 7. Minimal correction
+## 8. Minimal correction
 - Change:
 - Why this is minimal:
 - Rollback:
 
-## 8. Verification
+## 9. Verification
 - Original reproduction path:
 - Expected result:
 - Observed result:
 - Neighboring / regression checks:
 - Temporary instrumentation removed:
 
-## 9. Metrics
+## 10. Metrics
 - Investigation start:
 - Correct-cause time:
 - Hypotheses considered:
@@ -90,10 +122,10 @@ What uncertainty is this test intended to reduce?
 - False paths:
 - Regressions introduced:
 
-## 10. Limitations
+## 11. Limitations
 ...
 
-## 11. Artifacts
+## 12. Artifacts
 - Logs:
 - Screenshots:
 - Requests:
