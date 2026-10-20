@@ -1,37 +1,76 @@
-# DFI-004 — Slow WordPress contact page
+# DFI-004 — Slow WordPress Contact page
 
-## Status
-Mode: profiling + isolation  
-Stack: WordPress, Query Monitor, form plugin  
-Outcome: major hypotheses excluded; exact slow callback unresolved
+## Evidence status
+
+**Date:** 2026-07-08  
+**Mode:** profiling + hypothesis elimination  
+**Stack:** WordPress, Query Monitor, BuddyBoss theme/plugin stack  
+**Outcome:** major causes excluded; exact slow callback not isolated to closure
 
 ## Observable problem
-A contact page showed very slow server-side generation.
 
-## Evidence
-Query Monitor captured approximately:
-- total generation time: 10.99 s;
-- SQL time: 0.15 s;
-- query count: 85;
-- actual WordPress HTTP API calls: none for the measured request.
+The Contact page had very slow server-side generation.
 
-Execution time clustered around major lifecycle phases:
-- `plugins_loaded`: ~2.53 s;
-- `init`: ~2.68 s;
-- `wp_head`: ~4.19 s.
+## Query Monitor evidence
 
-## Hypothesis updates
-- Database latency was not supported as the primary cause.
-- External WordPress HTTP API latency was not supported as the primary cause.
-- Plugin/theme callback execution inside lifecycle hooks remained the strongest area for further isolation.
+Preserved measurements:
 
-## Functional optimization test
-A form-asset unload rule with an exception for the contact page was validated functionally: the form still rendered and required-field validation worked.
+```text
+Page generation time: 10.99 s
+Database time:        0.15 s
+Queries:              85
+HTTP API calls:       none for this request
+```
 
-However, the historical record does not preserve sufficient before/after timing evidence to claim a measured performance improvement.
+Hook/lifecycle timings included:
+
+```text
+plugins_loaded  2.5312 s
+init            2.6796 s
+wp_head         4.1945 s
+wp_body_open    0.1972 s
+wp_footer       0.1260 s
+shutdown        0.1416 s
+```
+
+## Interpretation
+
+The evidence weakened two common hypotheses:
+
+### H1 — Slow database is the primary cause
+
+Not supported. SQL accounted for only about 0.15 s of an approximately 10.99 s request.
+
+### H2 — External WordPress HTTP API calls are blocking the page
+
+Not supported for the measured request. Query Monitor showed no executed HTTP API calls.
+
+## Remaining diagnostic surface
+
+The largest measured time was inside WordPress lifecycle execution, especially:
+
+- `plugins_loaded`;
+- `init`;
+- `wp_head`.
+
+Callbacks visible around `wp_head` included components from BuddyBoss Theme, Elementor/Pro, Yoast, GamiPress, WPCode, WooCommerce, Gravity Forms and Asset CleanUp.
+
+**Important:** visibility in the hook list did not prove any one of those components caused the delay.
+
+## Diagnostic artifacts
+
+The exact Query Monitor screenshots are not stored in this public case, but the measured values above were preserved in the engineering record.
+
+An exact before/after performance result for a later asset-unload experiment was not preserved, so this case does not claim a measured speedup from that experiment.
+
+## Supported conclusion
+
+The bottleneck was primarily outside SQL and outside executed WordPress HTTP API calls, and further isolation needed callback-level timing inside lifecycle hooks.
+
+## Verification status
+
+**Partially diagnosed.** The individual slow callback was not measured to closure.
 
 ## DFI significance
-This case demonstrates hypothesis elimination: expensive SQL and external HTTP calls were plausible suspects but were contradicted by measurements. The diagnostic surface moved toward hook/callback timing.
 
-## Unresolved item
-The individual callback responsible for the remaining delay was not measured to closure.
+The value of the case is negative evidence: DFI removed attractive but weak hypotheses and redirected effort toward the execution phases that actually consumed the request time.
