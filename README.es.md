@@ -64,6 +64,9 @@ El ejemplo es educativo y no constituye un motor automático de análisis de cau
 - [Estrategia de propiedad intelectual](INTELLECTUAL_PROPERTY.md)
 - [Primer caso DFI público](cases/DFI-001-wordpress-header-origin/README.md)
 - [Guía legible por sistemas de IA](docs/llms.txt)
+- [Contexto canónico para revisión por IA](docs/AI_CONTEXT.md)
+- [Contexto estructurado para IA](docs/ai-context.json)
+- [Prompt reutilizable para revisión con otra IA](prompts/AI_REVIEW_PROMPT.md)
 
 ## Cita
 
