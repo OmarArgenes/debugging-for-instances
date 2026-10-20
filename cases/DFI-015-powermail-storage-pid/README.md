@@ -74,6 +74,12 @@ The observed English storage destination was explained directly by the translate
 
 The historical diagnostic session was intentionally read-only. No storage PID was changed in production and no post-change submission test is claimed.
 
+## Verification status
+
+**Cause/location verified; remediation intentionally not performed.**
+
+The recorded English submissions in PID 2 matched the translated content-element storage target. Because the session was read-only, no post-change submission test is claimed.
+
 ## DFI significance
 
 The investigation moved from “records are missing” to the exact persistence location, then matched that location to the translated form configuration instead of assuming a database or Powermail failure.
