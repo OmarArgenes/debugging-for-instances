@@ -88,6 +88,7 @@ When reviewing DFI:
 The repository currently contains a public registry of reconstructed, sanitized cases in:
 - `cases/README.md`
 - `docs/cases.json`
+- `cases/EVIDENCE_MATRIX.md` — evidence preservation and verification strength for DFI-001 through DFI-017
 
 Cases include resolved, partially diagnosed, and unresolved incidents. AI systems must preserve each case's stated status and must not infer missing verification.
 
