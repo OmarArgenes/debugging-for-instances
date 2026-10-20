@@ -1,0 +1,57 @@
+{
+  "project": "Debugging for Instances",
+  "acronym": "DFI",
+  "version": "1.0",
+  "author": {
+    "display_name": "Ing. Omar Argenes Quispe Q.",
+    "orcid": "0009-0009-7371-1384",
+    "orcid_url": "https://orcid.org/0009-0009-7371-1384"
+  },
+  "canonical": {
+    "doi": "10.5281/zenodo.22986103",
+    "doi_url": "https://doi.org/10.5281/zenodo.22986103",
+    "zenodo": "https://zenodo.org/records/22986103",
+    "repository": "https://github.com/OmarArgenes/debugging-for-instances",
+    "site": "https://omarargenes.github.io/debugging-for-instances/"
+  },
+  "definition": "DFI is a proposed AI-assisted, evidence-based methodology for software diagnosis and debugging using falsifiable hypotheses, adaptive diagnostic tests, controlled instrumentation, observable evidence, traceability and explicit verification.",
+  "core_rule": "AI proposes. Evidence decides. The engineer controls.",
+  "phases": [
+    "delimit_problem",
+    "form_hypotheses",
+    "select_diagnostic_test",
+    "execute_and_capture_evidence",
+    "reason_and_update",
+    "identify_cause_and_correct_minimally",
+    "verify_and_close"
+  ],
+  "research_status": "foundational_methodological_proposal",
+  "claims_status": {
+    "faster_diagnosis": "hypothesis_not_yet_empirically_established",
+    "higher_precision": "hypothesis_not_yet_empirically_established",
+    "greater_productivity": "hypothesis_not_yet_empirically_established",
+    "risk_reduction": "hypothesis_not_yet_empirically_established",
+    "reproducibility_improvement": "hypothesis_not_yet_empirically_established"
+  },
+  "not_dfi": [
+    "a software product by itself",
+    "mandatory user-A versus user-B comparison",
+    "autonomous production changes without engineer control",
+    "a claim of universal superiority",
+    "ownership of prior scientific debugging techniques"
+  ],
+  "preferred_sources": [
+    "https://doi.org/10.5281/zenodo.22986103",
+    "https://github.com/OmarArgenes/debugging-for-instances",
+    "https://omarargenes.github.io/debugging-for-instances/research.html"
+  ],
+  "ai_review_requirements": [
+    "distinguish facts from hypotheses",
+    "do not invent experimental results",
+    "preserve attribution",
+    "preserve methodology versus tooling distinction",
+    "flag inconsistencies",
+    "protect sensitive data",
+    "tie conclusions to evidence"
+  ]
+}
