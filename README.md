@@ -74,6 +74,14 @@ Document a case using the template, capture evidence after every diagnostic test
 node examples/adaptive-probe-demo.js
 ~~~
 
+## Research, provenance and IP
+
+- [Public research/authorship page](https://omarargenes.github.io/debugging-for-instances/research.html)
+- [Provenance and authorship record](PROVENANCE.md)
+- [Intellectual property strategy](INTELLECTUAL_PROPERTY.md)
+- [First public DFI case](cases/DFI-001-wordpress-header-origin/README.md)
+- [Machine-readable AI guide](docs/llms.txt)
+
 ## Citation
 
 > Quispe, Omar Argenes. (2026). *Debugging for Instances (DFI): Marco metodológico de diagnóstico y depuración de software asistido por inteligencia artificial y basado en evidencia* (Version 1.0). Zenodo. https://doi.org/10.5281/zenodo.22986103
