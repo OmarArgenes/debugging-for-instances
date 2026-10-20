@@ -1,58 +1,89 @@
-# DFI-002 — Membership-based scheduled-post access failure
+# DFI-002 — Premium membership detected incorrectly during Scheduled Posts
 
-## Status
+## Evidence status
 
-Mode: comparative + runtime tracing  
-Stack: WordPress, BuddyBoss, WooCommerce Memberships, AJAX  
-Outcome: resolved and positively verified
+**Date:** 2026-09-08  
+**Mode:** comparative + runtime tracing  
+**Stack:** WordPress, BuddyBoss Scheduled Posts, WooCommerce Memberships, AJAX, WPCode/custom PHP  
+**Outcome:** resolved and positively verified
 
 ## Observable problem
 
-One active Premium member could not schedule posts while another active Premium member could. A static permission comparison did not reveal a meaningful capability difference.
+An active Premium member received:
 
-## Initial hypotheses
+> “You don't have access to schedule the activity.”
 
-- H1: the failing account lacked a required WordPress/BuddyBoss capability.
-- H2: the scheduling feature was disabled for the failing context.
-- H3: Premium-membership detection was returning a false negative at runtime.
+while another Premium member could schedule successfully.
 
-## Diagnostic probes and evidence
+A static capability/role comparison did not explain the difference.
 
-Static comparison showed equivalent relevant capabilities for the investigated path and confirmed an active Premium membership state.
+## Runtime request
 
-Runtime tracing of the failing AJAX request captured membership checks and context flags.
+The failing workflow used:
 
-Key evidence:
+```text
+POST /wp-admin/admin-ajax.php
+action=post_update
+object=user
+```
 
-- active membership state was present;
-- scheduling feature flag was enabled;
-- request was in the main activity feed, not a group context;
-- administrator/moderator capabilities were not the deciding factor;
-- membership lookup by slug `premium` returned false;
-- membership lookup by numeric plan ID `605` returned true.
+The original trace included a concrete user ID; it is omitted from the public case.
 
-## Root cause
+## Preserved runtime evidence
 
-The custom Premium scheduling-access logic used a slug-based WooCommerce Memberships lookup that returned a false negative for the affected active member.
+The DFI instrumentation showed:
+
+```text
+filter_args: []
+BuddyBoss permission before custom rule: false
+BuddyBoss permission after yakuma_premium_can_schedule_activity: false
+feature enabled: true
+group context: false
+membership lookup by slug "premium": false
+membership lookup by plan ID 605: true
+membership status: active
+plan: 605 / premium
+```
+
+The individual membership record ID is intentionally omitted from the public case.
+
+## Failing implementation
+
+The access snippet **yakUma — Premium Scheduled Posts Access** used:
+
+```php
+wc_memberships_is_user_active_member($user_id, 'premium')
+```
+
+The runtime evidence contradicted that check: the membership was active, but the slug lookup returned `false`.
 
 ## Minimal correction
 
-The membership check was changed to use the numeric plan ID `605` while preserving native BuddyBoss group/admin rules.
+The membership test was changed to the numeric plan ID:
+
+```diff
+- wc_memberships_is_user_active_member($user_id, 'premium')
++ wc_memberships_is_user_active_member($user_id, 605)
+```
+
+No administrator capability was granted and the native group restrictions were preserved.
 
 ## Verification
 
 After the correction:
 
-- the previously failing Premium member could schedule posts;
-- the previously working Premium member continued to work;
-- no administrator capabilities were granted by the fix.
+- the previously failing Premium member could schedule activity;
+- the Premium account that already worked continued to work;
+- the flow remained scoped to the intended Premium scheduling rule.
 
-A negative test with a free/non-Premium account was not preserved in the historical evidence and is therefore not claimed.
+A preserved negative test with a Free/non-Premium account is not available and is not claimed.
+
+## Evidence interpretation
+
+The cause was not “the user has the wrong WordPress role.” The decisive failure occurred inside a **runtime membership lookup**.
 
 ## DFI significance
 
-This case demonstrates why static role/capability comparison can be insufficient. The decisive evidence existed in a runtime dependency: a membership lookup returned a different result than expected despite an active membership record.
+This case demonstrates the value of instrumenting the actual decision path. Static roles looked equivalent; the live dependency returned two different answers for the same active plan depending on how the plan was addressed.
 
-## Privacy
-
-Public documentation intentionally removes member names and personal identifiers.
+> Related but separate: deletion of an already scheduled activity is documented in DFI-016.
