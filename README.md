@@ -81,6 +81,9 @@ node examples/adaptive-probe-demo.js
 - [Intellectual property strategy](INTELLECTUAL_PROPERTY.md)
 - [First public DFI case](cases/DFI-001-wordpress-header-origin/README.md)
 - [Machine-readable AI guide](docs/llms.txt)
+- [AI review context](docs/AI_CONTEXT.md)
+- [Machine-readable AI context JSON](docs/ai-context.json)
+- [Reusable AI review prompt](prompts/AI_REVIEW_PROMPT.md)
 
 ## Citation
 
