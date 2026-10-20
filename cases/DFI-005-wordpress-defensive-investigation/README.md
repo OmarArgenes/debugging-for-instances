@@ -96,6 +96,21 @@ The historical evidence did **not** establish:
 - proof that every persistence mechanism was removed;
 - a final forensic clean-state certification.
 
+## Verification status
+
+**Partially verified / not forensically closed.**
+
+Verified observations:
+- the suspicious browser behavior was reproducibly detected;
+- multiple unauthorized server-side artifacts were confirmed;
+- blocking one remote resource did not restore the full workflow;
+- selected known unauthorized components were cleaned or disabled.
+
+Not verified:
+- complete removal of every persistence mechanism;
+- complete recovery of the Restore workflow;
+- forensic clean-state certification.
+
 ## DFI significance
 
 The investigation moved through several evidence surfaces:
