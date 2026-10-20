@@ -4,6 +4,8 @@ This registry reconstructs selected real debugging incidents from historical eng
 
 Important: reconstruction from prior chats is not equivalent to a contemporaneous lab notebook. Where a metric, exact timestamp, final verification, or root cause was not recorded, the public case leaves it explicitly unknown rather than inventing evidence.
 
+See the [Evidence Matrix](EVIDENCE_MATRIX.md) for preservation/verification strength across DFI-001 through DFI-017.
+
 | Case | Topic | DFI mode | Status |
 |---|---|---|---|
 | [DFI-001](DFI-001-wordpress-header-origin/) | WordPress header element origin | Exploratory + validation | Resolved in original context; public reconstruction |
