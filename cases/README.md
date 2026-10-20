@@ -8,19 +8,19 @@ Important: reconstruction from prior chats is not equivalent to a contemporaneou
 |---|---|---|---|
 | [DFI-001](DFI-001-wordpress-header-origin/) | WordPress header element origin | Exploratory + validation | Resolved in original context; public reconstruction |
 | [DFI-002](DFI-002-membership-scheduled-posts/) | Membership-based scheduled-post access | Comparative + runtime tracing | Resolved and positively verified |
-| [DFI-003](DFI-003-instructor-backend-redirect/) | Unexpected WordPress backend redirect | Tracing + isolation | Origin identified; correction verification pending |
+| [DFI-003](DFI-003-instructor-backend-redirect/) | Unexpected WordPress backend redirect | Tracing + isolation | Origin identified; constrained correction documented in DFI-014 |
 | [DFI-004](DFI-004-contact-page-performance/) | Slow WordPress contact page | Profiling + isolation | Bottleneck narrowed; exact callback unresolved |
 | [DFI-005](DFI-005-wordpress-defensive-investigation/) | Defensive WordPress compromise investigation | Cross-layer defensive tracing | Multiple compromise indicators confirmed; full forensic closure unresolved |
 | [DFI-006](DFI-006-typo3-language-attachment/) | TYPO3 wrong-language PDF attachment | Cross-layer tracing | Failure reproduced; server-side cause unresolved |
 | [DFI-007](DFI-007-typo3-tca-page-restriction/) | TYPO3 TCA page-type restriction | Configuration tracing | Cause strongly identified; permanent-fix verification pending |
-| [DFI-008](DFI-008-wordpress-hosting-routing/) | WordPress site serving hosting default page | HTTP surface isolation | Hosting/application layers separated; root cause unresolved |
+| [DFI-008](DFI-008-wordpress-hosting-routing/) | WordPress site serving hosting default page | HTTP surface isolation | Plesk root cause identified and removed; separate application 500 unresolved |
 
-| [DFI-009](DFI-009-quiz-builder-canonical-redirect/) | Quiz Builder canonical redirect | Routing + query-state tracing | Redirect narrowed; final rendering unresolved |
-| [DFI-010](DFI-010-learndash-asset-cleanup-fatal/) | LearnDash dependency removed by optimization | Dependency tracing | Cause identified; correction proposed |
+| [DFI-009](DFI-009-quiz-builder-canonical-redirect/) | Quiz Builder canonical redirect | Routing + query-state tracing | Resolved and verified |
+| [DFI-010](DFI-010-learndash-asset-cleanup-fatal/) | LearnDash dependency removed by optimization | Dependency tracing | Resolved operationally; dependency mismatch verified by recovery |
 | [DFI-011](DFI-011-buddyboss-profile-photo-crop/) | BuddyBoss profile-photo crop failure | Elimination + AJAX tracing plan | Unresolved |
 | [DFI-012](DFI-012-stale-rewrite-rules-404/) | Intermittent builder/event 404s | Validation | Operationally resolved; trigger uncertain |
 | [DFI-013](DFI-013-gamification-duplicate-awards/) | Duplicate/inconsistent gamification awards | Configuration audit | Defects identified; correction pending |
-| [DFI-014](DFI-014-certificate-editor-backend-bridge/) | Certificate editor backend-access bridge | Tracing + constrained correction | Redirect solved; UI isolation partially verified |
+| [DFI-014](DFI-014-certificate-editor-backend-bridge/) | Certificate editor backend-access bridge | Tracing + constrained correction | Resolved and functionally verified |
 | [DFI-015](DFI-015-powermail-storage-pid/) | Unexpected multilingual Powermail storage PID | Configuration tracing | Storage explanation identified |
 | [DFI-016](DFI-016-scheduled-activity-delete-permission/) | Scheduled activity deletion denied | AJAX/authorization tracing | Resolved and verified |
 | [DFI-017](DFI-017-object-cache-critical-error/) | Frontend critical error after cache state | Cache-state validation | Recovered; deeper trigger uncertain |
