@@ -1,36 +1,109 @@
 # DFI-005 — Defensive investigation of compromised WordPress admin behavior
 
-## Status
-Mode: cross-layer defensive tracing
-Stack: WordPress, browser DevTools, theme/plugin inspection
-Outcome: multiple compromise indicators confirmed; full forensic closure unresolved
+## Evidence status
+
+**Date:** October 2026  
+**Mode:** cross-layer defensive tracing  
+**Stack:** WordPress, UpdraftPlus workflow, DevTools, PHP/theme, must-use plugins  
+**Outcome:** multiple compromise indicators confirmed; partial remediation; no claim of full forensic closure
 
 ## Observable problem
-A legitimate administration control stopped behaving normally. The initial symptom could have been mistaken for a backup-plugin or AJAX failure.
 
-## Diagnostic evidence
-Browser diagnostics showed that the related administrative request itself could complete successfully, weakening the hypothesis that the endpoint alone was broken.
+A legitimate restore control in WordPress stopped behaving normally. A simple plugin/AJAX failure was initially plausible.
 
-Event and script tracing revealed injected client-side behavior interfering with normal clicks. Separate server-side inspection also confirmed unauthorized modifications in more than one WordPress persistence surface.
+## Browser-side evidence
 
-## Supported conclusions
-- The visible administration symptom was affected by injected browser-side behavior.
-- The incident was not limited to a single remote script or one plugin.
-- A narrow client-side block was not sufficient to declare the site remediated.
+The related administrative AJAX path could return HTTP 200, including a normal environment message such as:
 
-## Defensive remediation record
-The investigation included containment of confirmed unauthorized components, cleanup of known modified application files, and recommendations to preserve evidence, inspect backups offline, rotate access material, reinstall trusted components, and validate the site in a controlled environment before declaring closure.
+```text
+Working binary zip found: /usr/bin/zip
+```
 
-## Unresolved items
-- exact initial compromise vector;
-- exact first compromise date;
-- proof that all persistence mechanisms were removed;
-- final clean-state certification.
+That weakened the hypothesis that the restore endpoint itself was simply unavailable.
 
-Accordingly this case is documented as a defensive investigation with partial remediation, not as a completed forensic cleanup.
+Event/script tracing then identified injected browser behavior that installed a document-level click handler and called:
+
+```js
+e.preventDefault()
+```
+
+The injected flow presented a fake CAPTCHA/social-engineering interaction instead of allowing the expected administration action.
+
+## Preserved DFI probe pattern
+
+The private incident record preserved a script search of the form:
+
+```js
+(() => {
+  const rx = /<redacted-malicious-indicator>|all\.min\.js|showCaptcha/i;
+  const rows = [...document.scripts]
+    .filter(s => rx.test(s.src || s.textContent))
+    .map(s => ({ source: s.src || '[inline]', id: s.id || '-' }));
+  console.table(rows);
+})();
+```
+
+A same-origin HTML fetch was also used to determine whether the suspicious indicator was present in server-delivered HTML rather than only injected after load:
+
+```js
+(async () => {
+  const html = await fetch(location.href, {
+    credentials: 'same-origin',
+    cache: 'no-store'
+  }).then(r => r.text());
+
+  // indicator value intentionally redacted in the public case
+  console.log({ htmlLength: html.length });
+})();
+```
+
+The exact malicious domain/payload is intentionally not republished here.
+
+## Server-side integrity evidence
+
+The defensive review confirmed unauthorized artifacts in more than one persistence surface, including:
+
+- injected code in a child-theme `functions.php`;
+- a block identified as `wphc-theme-compat` / Base64-related code;
+- `mu-plugins/wph-auto-cache.php`, which also produced errors around line 333;
+- an unauthorized upload/backdoor-style plugin directory.
+
+This established that the incident was not just one blocked remote JavaScript request.
+
+## Remediation actions preserved
+
+- a cleaned copy of the affected `functions.php` was uploaded;
+- the malicious/suspicious must-use component was disabled by renaming it;
+- known unauthorized application artifacts were removed/disabled;
+- preservation of logs, backups and database evidence was recommended;
+- trusted reinstall/cleanup, credential/session/salt rotation and staging verification were recommended.
+
+## Important failed experiment
+
+Temporarily blocking the suspicious remote resource prevented it from loading, but the Restore control still did not become a reliable working path.
+
+Therefore:
+
+`block remote script` ≠ `site remediated`.
+
+## What was not established
+
+The historical evidence did **not** establish:
+
+- the exact initial compromise vector;
+- the exact first compromise date;
+- the complete PHP/database injection chain;
+- proof that every persistence mechanism was removed;
+- a final forensic clean-state certification.
 
 ## DFI significance
-The case demonstrates movement from a visible UI symptom to browser evidence and then to server-side integrity surfaces, showing how one symptom can cross multiple technical layers.
 
-## Safety and privacy
-This public record intentionally omits exploit-enabling details, credentials, customer data, private URLs, and sensitive artifacts.
+The investigation moved through several evidence surfaces:
+
+`UI symptom` → `AJAX behavior` → `event listener/script evidence` → `server-side integrity`.
+
+That cross-layer movement is exactly the type of adaptive diagnostic path DFI is intended to formalize.
+
+## Safety
+
+This public version is intentionally sanitized. Credentials, customer identifiers, private URLs and exploit-enabling payload details are not published.
