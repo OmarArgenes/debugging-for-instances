@@ -81,6 +81,92 @@
       "mode": [
         "http-surface-isolation"
       ]
+    },
+    {
+      "id": "DFI-009",
+      "title": "Quiz Builder canonical redirect",
+      "path": "cases/DFI-009-quiz-builder-canonical-redirect/",
+      "status": "partially-diagnosed",
+      "mode": [
+        "routing",
+        "query-state-tracing"
+      ]
+    },
+    {
+      "id": "DFI-010",
+      "title": "LearnDash dependency removed by asset optimization",
+      "path": "cases/DFI-010-learndash-asset-cleanup-fatal/",
+      "status": "cause-identified-correction-proposed",
+      "mode": [
+        "dependency-tracing"
+      ]
+    },
+    {
+      "id": "DFI-011",
+      "title": "BuddyBoss profile-photo crop failure",
+      "path": "cases/DFI-011-buddyboss-profile-photo-crop/",
+      "status": "unresolved",
+      "mode": [
+        "elimination",
+        "ajax-tracing"
+      ]
+    },
+    {
+      "id": "DFI-012",
+      "title": "Intermittent builder/event 404s from stale rewrite state",
+      "path": "cases/DFI-012-stale-rewrite-rules-404/",
+      "status": "operationally-resolved-trigger-uncertain",
+      "mode": [
+        "validation"
+      ]
+    },
+    {
+      "id": "DFI-013",
+      "title": "Duplicate and inconsistent gamification awards",
+      "path": "cases/DFI-013-gamification-duplicate-awards/",
+      "status": "configuration-defects-identified",
+      "mode": [
+        "configuration-audit",
+        "rule-isolation"
+      ]
+    },
+    {
+      "id": "DFI-014",
+      "title": "Certificate editor controlled backend-access bridge",
+      "path": "cases/DFI-014-certificate-editor-backend-bridge/",
+      "status": "redirect-corrected-ui-verification-partial",
+      "mode": [
+        "tracing",
+        "constrained-correction"
+      ]
+    },
+    {
+      "id": "DFI-015",
+      "title": "Multilingual form submissions stored in unexpected TYPO3 PID",
+      "path": "cases/DFI-015-powermail-storage-pid/",
+      "status": "cause-identified",
+      "mode": [
+        "configuration-tracing"
+      ]
+    },
+    {
+      "id": "DFI-016",
+      "title": "Scheduled activity deletion denied for Premium members",
+      "path": "cases/DFI-016-scheduled-activity-delete-permission/",
+      "status": "resolved-and-verified",
+      "mode": [
+        "ajax-tracing",
+        "authorization-tracing"
+      ]
+    },
+    {
+      "id": "DFI-017",
+      "title": "Frontend critical error recovered after object-cache flush",
+      "path": "cases/DFI-017-object-cache-critical-error/",
+      "status": "operationally-recovered-root-trigger-uncertain",
+      "mode": [
+        "cache-state-validation"
+      ]
     }
   ]
 }
