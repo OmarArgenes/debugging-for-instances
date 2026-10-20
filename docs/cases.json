@@ -1,0 +1,86 @@
+{
+  "project": "Debugging for Instances (DFI)",
+  "canonicalDoi": "10.5281/zenodo.22986103",
+  "author": "Ing. Omar Argenes Quispe Q.",
+  "reconstructionNote": "Cases reconstructed from historical engineering chats and notes. Unrecorded metrics or outcomes are left unknown rather than invented.",
+  "cases": [
+    {
+      "id": "DFI-001",
+      "title": "WordPress header element origin",
+      "path": "cases/DFI-001-wordpress-header-origin/",
+      "status": "resolved-original-context-public-reconstruction",
+      "mode": [
+        "exploratory",
+        "validation"
+      ]
+    },
+    {
+      "id": "DFI-002",
+      "title": "Membership-based scheduled-post access failure",
+      "path": "cases/DFI-002-membership-scheduled-posts/",
+      "status": "resolved-and-verified",
+      "mode": [
+        "comparative",
+        "runtime-tracing"
+      ]
+    },
+    {
+      "id": "DFI-003",
+      "title": "Unexpected WordPress backend redirect",
+      "path": "cases/DFI-003-instructor-backend-redirect/",
+      "status": "origin-identified-verification-pending",
+      "mode": [
+        "tracing",
+        "isolation"
+      ]
+    },
+    {
+      "id": "DFI-004",
+      "title": "Slow WordPress contact page",
+      "path": "cases/DFI-004-contact-page-performance/",
+      "status": "partially-diagnosed",
+      "mode": [
+        "profiling",
+        "isolation"
+      ]
+    },
+    {
+      "id": "DFI-005",
+      "title": "Defensive investigation of compromised WordPress admin behavior",
+      "path": "cases/DFI-005-wordpress-defensive-investigation/",
+      "status": "partial-remediation-forensic-closure-unresolved",
+      "mode": [
+        "cross-layer",
+        "defensive"
+      ]
+    },
+    {
+      "id": "DFI-006",
+      "title": "TYPO3 wrong-language PDF attachment",
+      "path": "cases/DFI-006-typo3-language-attachment/",
+      "status": "failure-reproduced-cause-unresolved",
+      "mode": [
+        "cross-layer-tracing",
+        "validation"
+      ]
+    },
+    {
+      "id": "DFI-007",
+      "title": "TYPO3 TCA page-type restriction",
+      "path": "cases/DFI-007-typo3-tca-page-restriction/",
+      "status": "cause-identified-verification-pending",
+      "mode": [
+        "configuration-tracing"
+      ]
+    },
+    {
+      "id": "DFI-008",
+      "title": "WordPress site serving a hosting default page",
+      "path": "cases/DFI-008-wordpress-hosting-routing/",
+      "status": "layer-isolation-root-cause-unresolved",
+      "mode": [
+        "http-surface-isolation"
+      ]
+    }
+  ]
+}
