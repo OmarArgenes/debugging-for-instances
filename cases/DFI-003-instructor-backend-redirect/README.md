@@ -1,28 +1,71 @@
-# DFI-003 — Unexpected WordPress backend redirect
+# DFI-003 — Tracing an unexpected WordPress backend redirect
 
-## Status
-Mode: tracing + isolation  
-Stack: WordPress, HTTP redirect, instructor-role plugin  
-Outcome: redirect origin identified; final correction/verification not preserved
+## Evidence status
+
+**Date:** 2026-09-09  
+**Mode:** HTTP redirect tracing + origin identification  
+**Stack:** WordPress, LearnDash Instructor Role  
+**Outcome:** redirect origin identified; the generic backend restriction was intentionally kept in place
 
 ## Observable problem
-A non-administrator instructor account attempting to access a WordPress backend path received an HTTP 302 redirect to the public site instead of the expected backend view.
 
-## Investigation
-The investigation traced the redirect rather than assuming it originated from BuddyBoss or from a generic lockdown snippet.
+An Instructor account was redirected away from WordPress backend URLs even though the required workflow needed a narrowly scoped backend editor.
 
-## Evidence
-The redirect path was attributed to the instructor-role plugin method `Instructor_Role_Settings->toggle_instructor_backend_access` in the plugin's backend-access logic.
+The account had the Instructor role and:
 
-The affected account did not have `manage_options`, which was consistent with plugin-specific backend restrictions being relevant.
+```text
+manage_options = false
+```
 
-## Supported diagnosis
-The redirect originated from the instructor-role plugin's backend-access control, not from the initially suspected BuddyBoss path.
+## Diagnostic probe
 
-A configuration state equivalent to the instructor backend dashboard being disabled was the leading operational explanation.
+A trace request was made to the backend with a DFI marker:
 
-## Correction and verification
-The historical record does not preserve a completed correction and post-fix verification. This case is therefore classified as origin identified, not fully resolved.
+```text
+/wp-admin/?yakuma_dfi_redirect=1
+```
+
+## Preserved evidence
+
+The request produced:
+
+```text
+HTTP status: 302
+destination: site root
+```
+
+The redirect trace identified:
+
+```text
+InstructorRole\Modules\Classes\Instructor_Role_Settings
+  ->toggle_instructor_backend_access
+```
+
+in:
+
+```text
+/wp-content/plugins/instructor-role/modules/classes/class-instructor-role-settings.php
+line 3510
+```
+
+called through WordPress redirect handling.
+
+## Hypothesis result
+
+The redirect was **not** attributed to BuddyBoss, a generic WPCode lockdown rule, or missing `manage_options` by itself.
+
+The responsible origin was the Instructor Role backend-access restriction.
+
+## Product decision
+
+The global Instructor backend restriction was not disabled. The requirement was to keep the Instructor backend dashboard blocked while allowing only the specific certificate-edit workflow.
+
+That constrained correction is documented separately in **DFI-014**.
+
+## Verification
+
+Origin identification is verified by the redirect trace. This case intentionally stops at identifying the responsible redirect component; the narrowly scoped correction and its verification belong to DFI-014.
 
 ## DFI significance
-The case illustrates tracing a visible HTTP symptom to the exact plugin/class/method responsible, avoiding unrelated configuration changes.
+
+A visible redirect was traced to the exact plugin class/method and file location before any broad access setting was changed.
