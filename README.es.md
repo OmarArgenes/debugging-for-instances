@@ -57,6 +57,14 @@ node examples/adaptive-probe-demo.js
 
 El ejemplo es educativo y no constituye un motor automático de análisis de causa raíz.
 
+## Investigación, autoría y propiedad intelectual
+
+- [Página pública de investigación y autoría](https://omarargenes.github.io/debugging-for-instances/research.html)
+- [Registro de procedencia y autoría](PROVENANCE.md)
+- [Estrategia de propiedad intelectual](INTELLECTUAL_PROPERTY.md)
+- [Primer caso DFI público](cases/DFI-001-wordpress-header-origin/README.md)
+- [Guía legible por sistemas de IA](docs/llms.txt)
+
 ## Cita
 
 > Quispe, Omar Argenes. (2026). *Debugging for Instances (DFI): Marco metodológico de diagnóstico y depuración de software asistido por inteligencia artificial y basado en evidencia* (Versión 1.0). Zenodo. https://doi.org/10.5281/zenodo.22986103
