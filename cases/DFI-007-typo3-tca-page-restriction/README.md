@@ -1,24 +1,64 @@
-# DFI-007 — TYPO3 TCA page-type restriction
+# DFI-007 — TYPO3 Timeline blocked by a page-type restriction
 
-## Status
-Mode: configuration tracing
-Stack: TYPO3 12.4, TCA overrides, custom content elements
-Outcome: cause strongly identified; permanent-fix verification pending
+## Evidence status
+
+**Date:** 2026-10-15  
+**Mode:** configuration comparison + origin identification  
+**Stack:** TYPO3 12.4.36, TCA, Bootstrap Package/custom content elements  
+**Outcome:** cause strongly identified; permanent code change not executed in the recorded session
 
 ## Observable problem
-A Timeline content element could not be created on a specific TYPO3 page because of a page-type restriction.
 
-## Comparative configuration evidence
-Other custom content elements such as Accordion, Tabs and Cards had an override equivalent to allowing the page type explicitly, while Timeline and Carousel did not.
+Creating a Timeline item on a TYPO3 page failed with an error equivalent to:
 
-## Supported diagnosis
-The difference in TCA configuration explained why some custom content elements were available while Timeline remained blocked on that page type.
+```text
+Attempt to insert record on page … where table
+tx_bootstrappackage_timeline_item
+is not allowed.
+```
 
-## Proposed permanent correction
-Add the required Sitepackage TCA override in `Configuration/TCA/Overrides/` and clear TYPO3 caches.
+The affected page was recorded as PID 192.
 
-## Verification status
-The historical record does not preserve execution of the permanent code change and successful creation of the Timeline element afterward. The case therefore remains diagnosed, verification pending.
+## Comparative evidence
+
+The investigation compared the TCA configuration of custom content-element item tables that worked with the one that failed.
+
+Working item types such as Accordion, Tabs and Cards had the page-type restriction bypass enabled.
+
+Timeline did not.
+
+Carousel was also noted as lacking the equivalent override in the inspected configuration.
+
+## Proposed TCA correction
+
+The exact proposed override was:
+
+```php
+$GLOBALS['TCA']['tx_bootstrappackage_timeline_item']['ctrl']['security']['ignorePageTypeRestriction'] = true;
+```
+
+The intended location was the site's TCA overrides, for example under:
+
+```text
+Configuration/TCA/Overrides/
+```
+
+followed by clearing TYPO3 caches.
+
+## Evidence interpretation
+
+The failure was not treated as a generic editor permission problem. The comparison isolated a concrete configuration difference on the affected database table.
+
+## Execution status
+
+The session did not have the required PHP/server access to implement the permanent TCA override safely.
+
+Therefore this case records:
+
+- **cause/origin:** strongly supported;
+- **proposed correction:** explicit;
+- **post-change verification:** not performed in the preserved investigation.
 
 ## DFI significance
-This case uses a working/failing configuration comparison as a diagnostic probe to isolate the missing condition responsible for the behavior.
+
+The working content elements served as a diagnostic control. Comparison was used as a probe to isolate one missing configuration condition; it was not assumed to be the definition of DFI itself.
