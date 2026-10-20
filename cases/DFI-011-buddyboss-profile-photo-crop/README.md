@@ -72,6 +72,12 @@ The historical record does not preserve:
 
 The requested next test was to reproduce with the same image/account while capturing the failing AJAX response, but that result was not preserved.
 
+## Verification status
+
+**Control path verified; original failing path unresolved.**
+
+The administrator/test-account upload and crop succeeded, but the originally failing user's request was not captured to completion after diagnosis. No fix is claimed.
+
 ## DFI significance
 
 A working control case materially narrowed the hypothesis space. The investigation avoided blaming Imagick or Offload Media without evidence.
