@@ -59,6 +59,12 @@ Therefore this case records:
 - **proposed correction:** explicit;
 - **post-change verification:** not performed in the preserved investigation.
 
+## Verification status
+
+**Cause strongly supported; correction not executed in the preserved session.**
+
+The comparison evidence supports the missing TCA restriction override as the responsible configuration difference, but no post-change creation test is claimed because the required server/PHP change was not performed.
+
 ## DFI significance
 
 The working content elements served as a diagnostic control. Comparison was used as a probe to isolate one missing configuration condition; it was not assumed to be the definition of DFI itself.
