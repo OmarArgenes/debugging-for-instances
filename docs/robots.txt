@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://omarargenes.github.io/debugging-for-instances/sitemap.xml
